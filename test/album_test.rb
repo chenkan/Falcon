@@ -2,9 +2,10 @@
 
 #puts __FILE__
 
-#require 'require_all'
-require_relative '../api/login'
-require_relative '../api/album'
+require 'require_all'
+require_all '../api/*.rb'
+#require_relative '../api/login'
+#require_relative '../api/album'
 require 'test/unit'
 
 #Login.login('a', 'b')
