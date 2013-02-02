@@ -1,27 +1,27 @@
-#Dir[File.dirname() + '../api/*.rb'].each {|file| require file }
-
-#puts __FILE__
-
-require 'require_all'
-require_all '../api/*.rb'
 #require_relative '../api/login'
 #require_relative '../api/album'
+require 'require_all'
+require_all '../api/**/*.rb'
 require 'test/unit'
 
-#Login.login('a', 'b')
+class AlbumTest < Test::Unit::TestCase
 
-class AlbumTest < Test::Unit::TestCase 
-	#include Login
-
-    def test_create_album
-      rsp = Login.login('falcon_test@163.com', 'test1234')
-      cookis = rsp.headers['Set-Cookie']
-      rsp = Album.create_album(cookis, 'falcon_test', 'name', 'desc')
-      puts rsp.body
+  def test_create_album
+    cookies = Login.login_from_163('falcon_test@163.com', 'test1234').headers['Set-Cookie']
+    test_data = [
+        ['name_A', 'desc_A'],
+        ['name_B', 'desc_B'],
+        ['name_C', 'desc_C']
+    ]
+    test_data.each do |name, desc|
+      rsp = Album.create_album(cookies, 'falcon_test', name, desc)
       assert_match(/id:\d+/, rsp.body)
+      assert_match(/name:"#{name}"/, rsp.body)
+      assert_match(/desc:"#{desc}"/, rsp.body)
     end
+  end
 
-    def test_delete_album
+  def test_delete_album
+  end
 
-    end
 end
