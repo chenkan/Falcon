@@ -6,6 +6,7 @@ require 'test/unit'
 
 class AlbumCreate < Test::Unit::TestCase
 
+  #TODO 独立出数据准备与清理
   def test_create_album
     cookie = Login.login_from_163('falcon_test@163.com', 'test1234').headers['Set-Cookie']
     test_data = [

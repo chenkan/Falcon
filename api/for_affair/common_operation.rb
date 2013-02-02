@@ -6,8 +6,8 @@ class CommonOperation
 
   def self.prepare_an_album_get_its_id(cookie, username)
     rsp = Album.create_album(cookie, username, 'prepare_a_album', 'prepare_a_album')
-    return rsp.body[/id:(\d+),lurl/].sub('id:', '').sub(',lurl', '')
-    #TODO 使用JSON解析器
+    return rsp.body[/id:(\d+),lurl/, 1]
+    #TODO 尝试使用JSON解析器
   end
 
   def self.get_album_list(cookie, username)
@@ -18,6 +18,10 @@ class CommonOperation
       req.url 'http://' + cache_url
     end
     return rsp.body[/var.+='(.+)';/, 1].split(';')
+  end
+
+  def self.delete_all_albums
+    #TODO
   end
 
 end
