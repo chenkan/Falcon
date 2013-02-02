@@ -4,7 +4,7 @@ require 'require_all'
 require_all '../api/**/*.rb'
 require 'test/unit'
 
-class AlbumTest < Test::Unit::TestCase
+class AlbumCreate < Test::Unit::TestCase
 
   def test_create_album
     cookies = Login.login_from_163('falcon_test@163.com', 'test1234').headers['Set-Cookie']
@@ -19,9 +19,6 @@ class AlbumTest < Test::Unit::TestCase
       assert_match(/name:"#{name}"/, rsp.body)
       assert_match(/desc:"#{desc}"/, rsp.body)
     end
-  end
-
-  def test_delete_album
   end
 
 end
