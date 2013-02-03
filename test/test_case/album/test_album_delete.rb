@@ -1,5 +1,5 @@
 require 'require_all'
-require_all '../../api/**/*.rb'
+require_rel '../../../api/**/*.rb'
 require 'test/unit'
 
 class AlbumDelete < Test::Unit::TestCase

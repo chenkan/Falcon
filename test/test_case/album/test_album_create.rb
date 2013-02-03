@@ -1,7 +1,7 @@
 #require_relative '../api/login'
 #require_relative '../api/album'
 require 'require_all'
-require_all '../../api/**/*.rb' #TODO 路径不优雅不灵活
+require_rel '../../../api/**/*.rb' #TODO 路径不优雅不灵活
 require 'test/unit'
 
 class AlbumCreate < Test::Unit::TestCase

@@ -1,5 +1,5 @@
 require 'require_all'
-require_all '../../api/**/*.rb' #TODO 循环require自身？
+require_rel '../for_interface/*.rb'
 require 'test/unit'
 
 class CommonOperation
