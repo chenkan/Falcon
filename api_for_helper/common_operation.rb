@@ -12,12 +12,12 @@ class CommonOperation
 
   def self.get_album_list(cookie, username)
     rsp = UserSpace.get_user_space(cookie, username)
-    cache_url = rsp.body[/cacheFileUrl:".+"/].sub('cacheFileUrl:"', '').sub('"', '')
+    cache_url = rsp.body[/cacheFileUrl:"(.+)"/, 1]
     conn = Faraday.new
     rsp = conn.get do |req|
       req.url 'http://' + cache_url
     end
-    return rsp.body[/var.+='(.+)';/, 1].split(';')
+    return rsp.body.scan(/id:(\d{1,12}),name/).map { |x| x[0] } # string.scan is powerful
   end
 
   def self.delete_all_albums(cookie, username)
