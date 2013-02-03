@@ -1,5 +1,5 @@
 require 'require_all'
-require_rel '../for_interface/*.rb'
+require_rel '../api_for_interface/*.rb'
 require 'test/unit'
 
 class CommonOperation
