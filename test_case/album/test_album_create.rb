@@ -1,16 +1,12 @@
-require 'require_all'
-require_rel '../../api_for_*/*.rb'
-require 'test/unit'
+require_relative '../test_base.rb'
 
-class AlbumCreate < Test::Unit::TestCase
+class AlbumCreate < TestBase
 
   def setup
-    puts 'setup'
-    @cookie = Login.login_from_163('falcon_test@163.com', 'test1234').headers['Set-Cookie']
+    super
   end
 
-  def test_create_album
-    puts 'test'
+  def test_album_create
     test_data = [
         ['name_A', 'desc_A'],
         ['name_B', 'desc_B'],
@@ -25,8 +21,8 @@ class AlbumCreate < Test::Unit::TestCase
   end
 
   def teardown
-    puts 'teardown'
     CommonOperation.delete_all_albums(@cookie, 'falcon_test')
+    super
   end
 
 end
