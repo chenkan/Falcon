@@ -21,10 +21,7 @@ class AlbumCreate < Test::Unit::TestCase
       assert_match(/desc:"#{desc}"/, rsp.body)
     end
 
-    album_list = CommonOperation.get_album_list(cookie, 'falcon_test')
-    album_list.each do |album_id|
-      Album.delete_album(cookie, 'falcon_test', album_id)
-    end
+    CommonOperation.delete_all_albums(cookie, 'falcon_test')
   end
 
 end

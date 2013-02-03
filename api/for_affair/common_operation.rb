@@ -20,8 +20,11 @@ class CommonOperation
     return rsp.body[/var.+='(.+)';/, 1].split(';')
   end
 
-  def self.delete_all_albums
-    #TODO
+  def self.delete_all_albums(cookie, username)
+    album_list = CommonOperation.get_album_list(cookie, username)
+    album_list.each do |album_id|
+      Album.delete_album(cookie, username, album_id)
+    end
   end
 
 end
