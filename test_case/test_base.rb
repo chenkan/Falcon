@@ -3,7 +3,7 @@ require_rel '../api_for_*/*.rb'
 require 'minitest/autorun'
 require 'minitest/reporters'
 
-MiniTest::Reporters.use!
+MiniTest::Reporters.use! [MiniTest::Reporters::SpecReporter.new]
 
 class TestBase < MiniTest::Unit::TestCase
 
