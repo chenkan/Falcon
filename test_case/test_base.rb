@@ -7,10 +7,9 @@ MiniTest::Reporters.use!
 
 class TestBase < MiniTest::Unit::TestCase
 
-  def setup
+  def setup(username, password)
     puts "setup..."
-    @cookie = Login.login_from_163('falcon_test@163.com', 'test1234').headers['Set-Cookie']
-    #TODO 抽取测试账号
+    return Login.login_from_163(username, password).headers['Set-Cookie']
   end
 
   def teardown

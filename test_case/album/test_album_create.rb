@@ -3,7 +3,7 @@ require_relative '../test_base.rb'
 class AlbumCreate < TestBase
 
   def setup
-    super
+    @cookie = super('falcon_test@163.com', 'test1234')
   end
 
   def test_album_create

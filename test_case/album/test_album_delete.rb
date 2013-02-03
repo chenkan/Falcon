@@ -3,7 +3,7 @@ require_relative '../test_base.rb'
 class AlbumDelete < TestBase
 
   def setup
-    super
+    @cookie = super('falcon_test@163.com', 'test1234')
     @test_data = [
         CommonOperation.prepare_an_album_get_its_id(@cookie, 'falcon_test'),
     ]
