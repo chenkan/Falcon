@@ -11,7 +11,7 @@ class AlbumDelete < Test::Unit::TestCase
     ]
     test_data.each do |album_id|
       rsp = Album.delete_album(cookie, 'falcon_test', album_id)
-      assert_match(/true/, rsp.body)
+      assert_match(/true/, rsp.body) #TODO why `1 tests, 2 assertions`?
       #TODO more assert
     end
   end
