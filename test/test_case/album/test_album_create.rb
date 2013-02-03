@@ -6,22 +6,29 @@ require 'test/unit'
 
 class AlbumCreate < Test::Unit::TestCase
 
-  #TODO 独立出数据准备与清理
+  def setup
+    puts 'setup'
+    @cookie = Login.login_from_163('falcon_test@163.com', 'test1234').headers['Set-Cookie']
+  end
+
   def test_create_album
-    cookie = Login.login_from_163('falcon_test@163.com', 'test1234').headers['Set-Cookie']
+    puts 'test'
     test_data = [
         ['name_A', 'desc_A'],
         ['name_B', 'desc_B'],
         ['name_C', 'desc_C']
     ]
     test_data.each do |name, desc|
-      rsp = Album.create_album(cookie, 'falcon_test', name, desc)
+      rsp = Album.create_album(@cookie, 'falcon_test', name, desc)
       assert_match(/id:\d+/, rsp.body)
       assert_match(/name:"#{name}"/, rsp.body)
       assert_match(/desc:"#{desc}"/, rsp.body)
     end
+  end
 
-    CommonOperation.delete_all_albums(cookie, 'falcon_test')
+  def teardown
+    puts 'teardown'
+    CommonOperation.delete_all_albums(@cookie, 'falcon_test')
   end
 
 end
