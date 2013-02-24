@@ -23,4 +23,5 @@ A Ruby http test framework
 ## TODO
 
 1. 执行报表效果很差，须改进
-2. 框架实际应用与反馈
+2. 调研minitest[插件](https://github.com/seattlerb/minitest)
+3. 框架实际应用与反馈
