@@ -4,15 +4,15 @@ class AlbumCreate < TestBase
 
   def setup
     @cookie = super('falcon_test@163.com', 'test1234')
-  end
-
-  def test_album_create
-    test_data = [
+    @test_data = [
         ['name_A', 'desc_A'],
         ['name_B', 'desc_B'],
         ['name_C', 'desc_C']
     ]
-    test_data.each do |name, desc|
+  end
+
+  def test_album_create
+    @test_data.each do |name, desc|
       rsp = Album.create_album(@cookie, 'falcon_test', name, desc)
       assert_match(/id:\d+/, rsp.body)
       assert_match(/name:"#{name}"/, rsp.body)
