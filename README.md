@@ -25,3 +25,4 @@ A Ruby http test framework
 1. 执行报表效果很差，须改进
 2. 调研minitest[插件](https://github.com/seattlerb/minitest)
 3. 框架实际应用与反馈
+4. 对于如何有效打印日志信息还在思考中
