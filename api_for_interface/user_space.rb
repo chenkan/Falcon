@@ -1,9 +1,10 @@
-require 'faraday'
+require "require_all"
+require_rel "../framework_util/*.rb"
 
 class UserSpace
 
   def self.get_user_space(cookie, username)
-    conn = Faraday.new
+    conn = Falcon.create_connection
     rsp = conn.post do |req|
       req.url "http://photo.163.com/photo/#{username}/dwr/call/plaincall/UserSpaceBean.getUserSpace.dwr"
       req.headers['cookie'] = cookie

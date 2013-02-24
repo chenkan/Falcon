@@ -1,9 +1,10 @@
-require 'faraday'
+require "require_all"
+require_rel "../framework_util/*.rb"
 
 class Album
 
 	def self.create_album(cookie, username, album_name, album_desc)
-    conn = Faraday.new
+    conn = Falcon.create_connection
 		rsp = conn.post do |req|
 		  req.url "http://photo.163.com/photo/#{username}/dwr/call/plaincall/AlbumBean.create.dwr"
 		  req.headers['cookie'] = cookie
@@ -23,7 +24,7 @@ class Album
   end
 
   def self.delete_album(cookie, username, album_id)
-    conn = Faraday.new
+    conn = Falcon.create_connection
     rsp = conn.post do |req|
       req.url "http://photo.163.com/photo/#{username}/dwr/call/plaincall/AlbumBean.delete.dwr"
       req.headers['cookie'] = cookie
